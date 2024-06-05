@@ -1,0 +1,37 @@
+- username: hoangfphus
+  credentials:
+    kind: Sso
+    provider: keycloak
+    email: hoangfphus@example.vn
+  roles:
+    - devops
+    - noc
+    - live-acquistion
+
+### Live-acquistion
+- username: no.thi
+  credentials:
+    kind: Sso
+    provider: keycloak
+    email: no.thi@example.vn
+  roles:
+    - live-acquistion
+
+### vod acquistion
+- username: pheo.chi
+  credentials:
+    kind: Sso
+    provider: keycloak
+    email: pheo.chi@example.vn
+  roles:
+    - vod-acquistion
+    - be
+
+### NOC
+- username: a.b.c
+  credentials:
+    kind: Sso
+    provider: keycloak
+    email: a.b.c@example.vn
+  roles:
+    - noc

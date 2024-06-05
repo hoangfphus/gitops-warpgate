@@ -1,0 +1,32 @@
+- name: internal-tools
+  options:
+    url: "https://internal-tools.example.vn"
+    tls:
+      mode: "Preferred"
+      verify: "false"
+  allow_access:
+    - devops
+    - content
+
+- name: semaphore
+  options:
+    url: 'http://192.168.10.146:3000/'
+    tls:
+      mode: "Preferred"
+      verify: "false"
+  allow_access:
+    - devops
+    - vod-acquistion
+    - live-acquistion
+
+- name: semaphore-v2
+  options:
+    url: 'http://192.168.10.146:3333/'
+    tls:
+      mode: "Preferred"
+      verify: "false"
+  allow_access:
+    - devops
+    - noc
+    - live-acquistion
+    - vod-acquistion

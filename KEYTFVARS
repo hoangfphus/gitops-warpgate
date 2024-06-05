@@ -1,0 +1,4 @@
+wg_admin_user     = "admin"
+wg_admin_password = "sUp3Rs3Cr3T"
+wg_expose_port    = 443
+wg_server_host    = "warpgate.example.vn"

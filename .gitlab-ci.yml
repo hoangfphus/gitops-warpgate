@@ -1,0 +1,50 @@
+stages:
+  - validate
+  - plan
+  - apply
+
+image:
+  name: hub.example.vn/hashicorp/terraform
+  entrypoint:
+    - "/usr/bin/env"
+    - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+cache:
+  paths:
+    - .terraform.lock.hcl
+    - terraform.tfstate
+
+before_script:
+  - terraform init -backend-config=$BE_TF_S3
+
+validate:
+  stage: validate
+  script:
+    - terraform validate
+  only:
+    refs:
+      - master
+
+plan:
+  stage: plan
+  script:
+    - cat "$TF_VARS" > key.tfvars
+    - terraform plan -var-file=key.tfvars -out "planfile"
+  dependencies:
+    - validate
+  artifacts:
+    paths:
+      - planfile
+  only:
+    refs:
+      - master
+
+apply:
+  stage: apply
+  script:
+    - terraform apply -input=false "planfile"
+  dependencies:
+    - plan
+  only:
+    refs:
+      - master
